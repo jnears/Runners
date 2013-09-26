@@ -3,6 +3,7 @@ module Name
 
 	def fullname
     firstname + " " + lastname
+    	"#{firstname} #{lastname}"
     end
 
 end

@@ -1,6 +1,18 @@
 Runners::Application.routes.draw do
-  resources :runners
+  resources :runners do
+   member do
+    get :show_lastname #get on specific runner /runners/:id/show_lastname, routed to runners#show_lastname
 
+   end
+
+   collection do
+     get :top_three #get on all runners runners/top_three, routed to top_three action of runner controller runners#top_three
+    end
+  end
+
+
+
+  root :to => 'runners#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
