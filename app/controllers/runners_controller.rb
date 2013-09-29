@@ -23,7 +23,9 @@ class RunnersController < ApplicationController
 
 
   def top_three
-    @runners = Runner.find(:all, :order => "created_at desc", :limit => 3)
+   # @runners = Runner.find(:all, :order => "created_at desc", :limit => 3)
+    @runners = Runner.order(created_at: :desc).take(3)
+    @runner_count = @runners.count
     #all is a retrieval of find method that returns all records matched by the options
   end
 
@@ -35,6 +37,9 @@ class RunnersController < ApplicationController
   # GET /runners/new
   def new
     @runner = Runner.new #make avaialable to the view @runner instance variable
+   # @runner.build_address
+    @runner.shoes.build
+    
 
     # initializes a new runner with all the fields set to blank (unless specified a default in your migration).  This account has not been save to the db yet.  It is ready for a user to fill in.
 
@@ -46,6 +51,9 @@ class RunnersController < ApplicationController
   # GET /runners/1/edit
   def edit #sets the forms post action to the 
   # when form is created is includes a hidden method field to reflect patch <input name="_method" type="hidden" value="patch">
+  if @runner.shoes.empty?
+  @runner.shoes.build
+end
   end
 
   # POST /runners
@@ -103,6 +111,6 @@ class RunnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def runner_params
-      params.require(:runner).permit(:firstname, :lastname)
+        params.require(:runner).permit(:id, :firstname, :lastname, :age, :gender, shoes_attributes: [:id, :runner_id, :shoe_id, :size, :make, :shoe_type] )#address_attributes: [:runner_id, :city], runners_shoes_attributes: [:runner_id, :shoe_id])
     end
 end

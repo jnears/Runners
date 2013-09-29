@@ -19,6 +19,25 @@
     <%= f.label :lastname %><br>
     <%= f.text_field :lastname %>
   </div>
+
+  <%= f.fields_for :shoes, @runner.shoes do |shoe_fields| %>
+   <div class="field">
+    <%= f.label :size %><br>
+    <%= shoe_fields.text_field :size %>
+</div>
+    <div class="field">
+    <%= f.label :shoe_type %><br>
+    <%= shoe_fields.text_field :shoe_type %>
+</div>
+    <div class="field">
+    <%= f.label :make %><br>
+    <%= shoe_fields.text_field :make %>
+    </div>
+<% end %>
+
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
