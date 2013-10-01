@@ -12,25 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :firstname %><br>
+    <%= f.label :firstname, 'First Name' %><br>
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br>
+    <%= f.label :lastname, 'Last Name' %><br>
     <%= f.text_field :lastname %>
   </div>
 
   <%= f.fields_for :shoes, @runner.shoes do |shoe_fields| %>
    <div class="field">
-    <%= f.label :size %><br>
+    <%= f.label :size, 'Shoe Size' %><br>
     <%= shoe_fields.text_field :size %>
 </div>
     <div class="field">
-    <%= f.label :shoe_type %><br>
+    <%= f.label :shoe_type, 'Shoe Type' %><br>
     <%= shoe_fields.text_field :shoe_type %>
 </div>
     <div class="field">
-    <%= f.label :make %><br>
+    <%= f.label :make, 'Shoe Make'%><br>
     <%= shoe_fields.text_field :make %>
     </div>
 <% end %>
