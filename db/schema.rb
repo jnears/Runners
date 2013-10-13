@@ -11,11 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130929150646) do
+ActiveRecord::Schema.define(version: 20131010135032) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
     t.integer  "runner_id"
     t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_posts", force: true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "excerpt"
+    t.text     "body"
+    t.date     "publish_date"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,8 +62,7 @@ ActiveRecord::Schema.define(version: 20130929150646) do
   create_table "shoes", force: true do |t|
     t.string   "make"
     t.string   "size"
-    t.string   "type"
-    t.text     "information"
+    t.string   "shoe_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

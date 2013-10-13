@@ -1,0 +1,62 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, 'Title' %><br>
+    <%= f.text_field :title %>
+  </div> 
+
+  <div class="field">
+    <%= f.label :slug, 'Slug' %><br>
+    <%= f.text_field :slug %>
+  </div> 
+
+  <div class="field">
+    <%= f.label :publish_date, 'Publish Date' %><br>
+
+        <%= f.text_field :publish_date, 'data-behaviour' => 'datepicker', :value => Date.today.strftime('%d-%m-%Y') %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('[data-behaviour~=datepicker]').datepicker({format: 'dd-mm-yyyy'});
+  })
+</script>
+   </div> 
+<% for category in Category.all %>
+<%= f.label category.id, category.name %>
+<%= check_box_tag "post[category_ids][]",category.id, @post.categories.include?(category),{ :id => "post_category_ids_"+ category.id.to_s} %>
+
+
+<% end %>
+
+
+
+  <div class="field">
+    <%= f.label :excerpt, 'Excerpt' %><br>
+    <%= f.text_area :excerpt %>
+  </div>
+
+   <div class="field">
+    <%= f.label :body, 'Body' %><br>
+    <%= f.text_area :body %>
+  </div>
+
+
+
+
+
+
+  <div class="form-actions">
+     <%= f.submit 'Save', :class =>'btn btn-primary' %>
+  <%= link_to 'Cancel', posts_path, :class=> "btn" %>
+  </div>
+<% end %>

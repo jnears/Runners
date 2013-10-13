@@ -5,7 +5,10 @@
   <%= @runner.fullname %>
 </p>
 
-
-
+ <% @runner.shoes.each do |shoe_fields| %>
+<%= shoe_fields.size %>
+<%= shoe_fields.make %>
+<%= shoe_fields.shoe_type %>
+<% end %>
 <%= link_to 'Edit', edit_runner_path(@runner) %> |
 <%= link_to 'Back', runners_path %>

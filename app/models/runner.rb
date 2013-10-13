@@ -5,6 +5,6 @@ accepts_nested_attributes_for :shoes
 
 	validates :firstname, presence: true
   
-  include Name
+  include Name #testing concerns
 
 end

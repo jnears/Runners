@@ -10,7 +10,8 @@ Runners::Application.routes.draw do
     end
   end
 
-
+  resources :posts
+  resources :categories
 
   root :to => 'runners#index'
   # The priority is based upon order of creation: first created -> highest priority.
