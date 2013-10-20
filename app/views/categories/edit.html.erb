@@ -2,6 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
-<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<button type="button" class="btn btn-default"><%= link_to 'Show', @post %></button>
+<button type="button" class="btn btn-default"><%= link_to 'Back', posts_path %></button>
+<button type="button" class="btn btn-danger"><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %></button>

@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:show_lastname, :show, :edit, :update, :destroy]
+	before_action :set_post, only: [:show_lastname, :edit, :update, :destroy]
 
   def index #mapped as a GET request to the index.html.erb file
-    @posts = Post.all 
+    @posts = Post.order('publish_date DESC')
+    @categories = Category.all
+    @posts = @posts.by_category_id(params[:category]) if params[:category].present?
   end
 
   def new
@@ -11,6 +13,7 @@ class PostsController < ApplicationController
   end
 
   def show
+     @post = Post.find_by_slug(params[:slug])
   end
 
   def edit

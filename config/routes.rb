@@ -12,7 +12,7 @@ Runners::Application.routes.draw do
 
   resources :posts
   resources :categories
-
+  get '/:year/:month/:day/:slug' => 'posts#show', :constraints => {:year => /(20)\d{2}/, :month => /\d{2}/, :day => /\d{2}/}, :as => :post_permalink
   root :to => 'runners#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

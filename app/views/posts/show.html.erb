@@ -1,17 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @post.title %></h1>
+
+Published on:
+<time datetime="<%= @post.publish_date.strftime('%d-%m-%Y') %>"><%= @post.publish_date.strftime('%e %B') %></time>
 <p>
 Slug: <%= @post.slug %>
 </p>
 <p>
-Publish Date: <%= @post.publish_date %>
 </p>
 
+<p>Categories:</p>
+<ul>
 
-<% for category in Category.all %>
-<%= category.name %>
-<% end %>
+<% @post.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+</ul>
+
 <p>
 	Body:
 </p>
