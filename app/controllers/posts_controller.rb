@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save                    
 
-        format.html { redirect_to @post, notice: 'Runner was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Runner was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -39,10 +39,20 @@ class PostsController < ApplicationController
     params[:post][:category_ids] ||= []
     respond_to do |format|
       if @post.update(post_params) 
-        format.html { redirect_to @post, notice: 'post was successfully updated.' }
+        format.html { redirect_to posts_path, notice: 'post was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.json { head :no_content }
     end
   end
 

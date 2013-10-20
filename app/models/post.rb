@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   scope :by_category_id, lambda {|cid| joins(:categories).where(['categories.id=?', cid])}
 	before_validation :create_slug
 	validates_presence_of :title, :excerpt, :body, :publish_date
+  validates_uniqueness_of :slug
 
 
   def permalink
