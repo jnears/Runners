@@ -5,9 +5,11 @@ class Post < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	accepts_nested_attributes_for :categories
   scope :by_category_id, lambda {|cid| joins(:categories).where(['categories.id=?', cid])}
-	before_validation :create_slug
-	validates_presence_of :title, :excerpt, :body, :publish_date
+	before_validation :create_slug, :set_defaults
+	validates_presence_of :title, :excerpt, :body
   validates_uniqueness_of :slug
+  validate :unique_slug_today
+
 
 
   def permalink
@@ -15,6 +17,25 @@ class Post < ActiveRecord::Base
   end
 
   private
+
+      def set_defaults
+      set_publish_date
+    end
+    
+    def set_publish_date
+      if self.publish_date.blank?
+        self.publish_date = Time.now
+      end
+    end
+
+    def unique_slug_today
+      if self.new_record?
+        errors.add(:slug, "must be unique for posts published on same day") unless Post.where(["slug = ? and ? = date_trunc('day', publish_date)", self.slug, self.publish_date.to_date]).empty?
+      else
+        errors.add(:slug, "must be unique for posts published on same day") unless Post.where(["id != ? AND slug = ? and ? = date_trunc('day', publish_date)", self.id, self.slug, self.publish_date.to_date]).empty?
+      end
+    end
+
     def create_slug
     if slug.blank?
         slug_url = self.title.downcase.gsub(/[^a-z0-9]+/i, '-')

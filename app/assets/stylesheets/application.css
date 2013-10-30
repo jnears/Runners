@@ -12,3 +12,11 @@
  *= require bootstrap-datepicker
  *= require_tree .
  */
+
+.navbar-fixed-top {
+  background: #000;
+}
+
+.content {
+	margin-top: 50px;
+}

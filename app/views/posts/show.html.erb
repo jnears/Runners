@@ -1,30 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @post.title %></h1>
 
-Published on:
+<p>
+	Published on:
 <time datetime="<%= @post.publish_date.strftime('%d-%m-%Y') %>"><%= @post.publish_date.strftime('%e %B') %></time>
-<p>
-Slug: <%= @post.slug %>
-</p>
-<p>
-</p>
-
-<p>Categories:</p>
-<ul>
-
-<% @post.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-</ul>
-
-<p>
-	Body:
 </p>
 <p>
 <%= @post.body %>
 </p>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

@@ -1,4 +1,5 @@
 Runners::Application.routes.draw do
+  get "users/new"
   resources :runners do
    member do
     get :show_lastname #get on specific runner /runners/:id/show_lastname, routed to runners#show_lastname
@@ -10,10 +11,13 @@ Runners::Application.routes.draw do
     end
   end
 
-  resources :posts
+  namespace :iadmin do
+    resources :posts
+  end
   resources :categories
-  get '/:year/:month/:day/:slug' => 'posts#show', :constraints => {:year => /(20)\d{2}/, :month => /\d{2}/, :day => /\d{2}/}, :as => :post_permalink
+  get '/:year/:month/:day/:slug' => 'posts#show', :constraints => {:year => /(20)\d{2}/, :month => /\d{2}/, :day => /\d{2}/}, :as => :permalink
   root :to => 'runners#index'
+  get 'blog' => 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

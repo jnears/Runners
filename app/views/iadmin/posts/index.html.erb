@@ -1,0 +1,39 @@
+<h1>Listing Posts</h1>
+
+
+<table class="table tale-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Excerpt</th>
+      <th>Publish Date</th>
+      <th>Categories</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, edit_iadmin_post_path(post) %></td>
+        <td><%= post.excerpt %></td>
+        <td><%= post.publish_date.strftime('%d-%m-%Y') %><%= post.publish_date %></td>
+        <td><ul><% post.categories.each do |cat| %>
+          <li>
+            <%= cat.name %>
+          </li>
+          <% end %>
+         </ul>
+        </td>
+        <td><button type="button" class="btn btn-default"><%= link_to 'Edit', edit_iadmin_post_path(post) %></button></td>
+        <td><button type="button" class="btn btn-danger"><%= link_to 'Destroy', iadmin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></button></td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br />
+<button type="button" class="btn btn-primary"><%= link_to 'New Post', new_iadmin_post_path %></button>

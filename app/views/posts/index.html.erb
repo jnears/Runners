@@ -1,34 +1,23 @@
 <h1>Listing Posts</h1>
-<%= link_to 'All', posts_path %>
+Filter categories: 
+<%= link_to 'All', blog_path %> | 
 <% @categories.each do |category| %>
-            <%= link_to category.name, posts_path(:category => category.id) %>
+            <%= link_to category.name, blog_path(:category => category.id) %> 
+            <%= '|' unless category == @categories.last %>
           <% end %>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Permalink</th>
-      <th>Excerpt</th>
-      <th>Publish Date</th>
-      <th>Categories</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to post.title, post %></td>
         <td><%= link_to post.title, post.permalink %></td>
-        <td><%= post.excerpt %></td>
-        <td><%= post.publish_date.strftime('%d-%m-%Y') %></td>
-        <td><% post.categories.each do |cat| %>
-            <%= link_to cat.name, posts_path(:cat => cat.id) %>
-          <% end %></td>
-        <td><button type="button" class="btn btn-default"><%= link_to 'Edit', edit_post_path(post) %></button></td>
-        <td><button type="button" class="btn btn-danger"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+       
+       
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +25,3 @@
 
 
 <br />
-<button type="button" class="btn btn-primary"><%= link_to 'New Post', new_post_path %></button>
