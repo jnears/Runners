@@ -31,16 +31,13 @@
   })
 </script>
    </div> 
-<% for category in Category.all %>
-<%= f.label category.id, category.name %>
-<%= check_box_tag "post[category_ids][]",category.id, @post.categories.include?(category),{ :id => "post_category_ids_"+ category.id.to_s} %>
-<% end %>
+
 
 Categories
 <ul>
 <% Category.all.each do |category| %>
 <li><%= category.name %>
-<%= check_box_tag :category_ids, category.id, @post.categories.include?(category), :name => 'post[category_ids][]' %>
+<%= check_box_tag :category_ids, category.id, :name => 'post[category_ids][]' %>
 </li>
 <% end %>
 </ul>

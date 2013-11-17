@@ -18,6 +18,8 @@ Runners::Application.routes.draw do
   get '/:year/:month/:day/:slug' => 'posts#show', :constraints => {:year => /(20)\d{2}/, :month => /\d{2}/, :day => /\d{2}/}, :as => :permalink
   root :to => 'runners#index'
   get 'blog' => 'posts#index'
+  get 'user/new'
+  match '/signup', to: 'users#new' , via: [:get]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
