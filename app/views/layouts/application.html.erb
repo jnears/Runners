@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Runners</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Runners</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-
-
-
-
-<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-     
-           <%= render 'layouts/navigation' %>
-        </div><!--/.nav-collapse -->
+          <%= render 'layouts/navigation' %>
+       </div><!--/.nav-collapse -->
       </div>
     </div>
 
-<div class="container content">
-
-	              <%= yield %>
-	          </div>
-	          
-</body>
+    <div class="container content">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    	<%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  	          
+  </body>
 </html>

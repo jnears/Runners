@@ -1,0 +1,39 @@
+// Place all the styles related to the Slider controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.slider-wrapper {
+	margin: 0 auto;
+	overflow:hidden;
+	width: 200px;
+}
+
+.slider {
+	position: relative;
+	left: 0;
+	top:0;
+}
+
+.slider-item {
+	float: left;
+	list-style: none;
+}
+
+
+.slider-controls{
+	margin-top:10px;
+}
+
+.slider-controls a:link{
+	text-decoration: none;
+}
+
+.slider-controls-prev {
+	float:left; 
+}
+
+.slider-controls-next {
+	float:right;
+}
