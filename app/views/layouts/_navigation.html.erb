@@ -9,7 +9,10 @@
 		<%= link_to 'Categories', categories_path %>
 	</li>
 	<li>
-		<%= link_to 'Posts', iadmin_posts_path %>
+    <%= link_to 'Posts', iadmin_posts_path %>
+  </li>
+  <li>
+		<%= link_to 'Sliders', iadmin_sliders_path %>
 	</li>
 	<% if signed_in? %>
             <li><%= link_to "Users", '#' %></li>

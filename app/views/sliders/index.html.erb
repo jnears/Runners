@@ -1,29 +1,23 @@
-<h1>Listing images</h1>
+<h1>Listing Sliders</h1>
 
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
 
-<div class="slider-wrapper">
-  <div class="slider">
-    <% @images.shuffle.each do |image| %>
-       <div class="slider-item">
-        <%= image_tag "slider/#{image.split('/').last}" %>
-      </div>
+  <tbody>
+    <% @sliders.each do |slider| %>
+      <tr>
+        <td><%= link_to slider.title, slider %></td>
+       
+       
+      </tr>
     <% end %>
-      
-    
-  </div>
-  <div class="slider-controls">
-    <a href="#" class="slider-controls-prev">
-      <
-    </a>
-    <a href="#" class="slider-controls-next">
-      >
-    </a>
-  </div>
-</div>
+  </tbody>
+</table>
 
-<p></p>
 
-  
-  
-  
+<br />

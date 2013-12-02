@@ -1,0 +1,29 @@
+<h1>Listing images</h1>
+
+
+
+<div class="slider-wrapper">
+  <div class="slider">
+    <% @images.shuffle.each do |image| %>
+       <div class="slider-item">
+        <%= image_tag "slider/#{image.split('/').last}" %>
+      </div>
+    <% end %>
+      
+    
+  </div>
+  <div class="slider-controls">
+    <a href="#" class="slider-controls-prev">
+      <
+    </a>
+    <a href="#" class="slider-controls-next">
+      >
+    </a>
+  </div>
+</div>
+
+<p></p>
+
+  
+  
+  

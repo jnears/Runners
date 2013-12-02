@@ -1,0 +1,34 @@
+<h1>Listing Sliders</h1>
+
+
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Title</th>
+<th>Slide Descriptions</th>
+</tr>
+</thead>
+
+<tbody>
+<% @sliders.each do |slider| %>
+<tr>
+<td>
+<%= link_to slider.title, edit_iadmin_slider_path(slider) %>
+</td>
+<td>
+<ul>
+<% slider.slides.each do |slide| %>
+<li>
+<%= slide.description %>
+</li>
+<% end %>
+</ul>
+
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+
+<br />

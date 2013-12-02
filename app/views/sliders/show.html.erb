@@ -1,0 +1,9 @@
+<h1><%= @post.title %></h1>
+
+<p>
+	Published on:
+<time datetime="<%= @post.publish_date.strftime('%d-%m-%Y') %>"><%= @post.publish_date.strftime('%e %B') %></time>
+</p>
+<p>
+<%= @post.body %>
+</p>

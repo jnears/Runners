@@ -12,6 +12,9 @@ Runners::Application.routes.draw do
 
   namespace :iadmin do
     resources :posts
+    resources :sliders
+    resources :slides
+
   end
   resources :categories
   get '/:year/:month/:day/:slug' => 'posts#show', :constraints => {:year => /(20)\d{2}/, :month => /\d{2}/, :day => /\d{2}/}, :as => :permalink
