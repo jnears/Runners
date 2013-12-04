@@ -20,6 +20,8 @@
 <% slider.slides.each do |slide| %>
 <li>
 <%= slide.description %>
+<%= image_tag slide.image_slide.url %>
+<%= image_tag slide.image_slide.url(:small) %>
 </li>
 <% end %>
 </ul>

@@ -33,6 +33,7 @@ gem 'pg', '~> 0.16.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-datepicker-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem "paperclip", "~> 3.5.2"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
