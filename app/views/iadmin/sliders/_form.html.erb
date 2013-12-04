@@ -16,13 +16,13 @@
     <%= f.text_field :title %>
   </div> 
 
-  <%= f.fields_for :slides, @slider.slides do |slide| %>
-    <%= f.label :description, 'Description' %><br>
+  <%= f.fields_for :slides do |slide| %>
+    <%= slide.label :description, 'Description' %><br>
     <%= slide.text_field :description %>
   <% end %>
 
 
-  <div class="form-actions">
+<div class="form-actions">
      <%= f.submit 'Save', :class =>'btn btn-primary' %>
   <%= link_to 'Cancel', iadmin_sliders_path, :class=> "btn" %>
   </div>

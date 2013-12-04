@@ -25,7 +25,6 @@ class Iadmin::PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save                    
-
         format.html { redirect_to iadmin_posts_path, notice: 'Runner was successfully created.' }
       else
         format.html { render action: 'new' }

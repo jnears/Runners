@@ -4,7 +4,7 @@ class Iadmin::SlidersController < ApplicationController
   def index #mapped as a GET request to the index.html.erb file
     @sliders = Slider.all
     @slides = Slide.all
-     @sliders = @sliders.by_slide_id(params[:slide]) if params[:slide].present?
+    @sliders = @sliders.by_slide_id(params[:slide]) if params[:slide].present?
   end
 
   # def show
@@ -14,8 +14,8 @@ class Iadmin::SlidersController < ApplicationController
   def new
   	@slider = Slider.new
     3.times do
-    slide = @slider.slides.build
-  end
+      slide = @slider.slides.build
+    end
   end
 
   def edit
@@ -67,7 +67,7 @@ class Iadmin::SlidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slider_params
-        params.require(:slider).permit(:id, :title, :slide_ids => [], slides_attributes: [:id, :description, :image] )
+        params.require(:slider).permit(:id, :title, slides_attributes: [:id, :description, :image] )
     end
 
 end
