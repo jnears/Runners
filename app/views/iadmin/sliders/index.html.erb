@@ -12,6 +12,7 @@
 <tbody>
 <% @sliders.each do |slider| %>
 <tr>
+
 <td>
 <%= link_to slider.title, edit_iadmin_slider_path(slider) %>
 </td>
@@ -20,13 +21,14 @@
 <% slider.slides.each do |slide| %>
 <li>
 <%= slide.description %>
-<%= image_tag slide.image_slide.url %>
 <%= image_tag slide.image_slide.url(:small) %>
 </li>
 <% end %>
 </ul>
 
 </td>
+<td><%= link_to 'Destroy', iadmin_slider_path(slider), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
 </tr>
 <% end %>
 </tbody>

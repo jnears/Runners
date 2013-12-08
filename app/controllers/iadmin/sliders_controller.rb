@@ -67,7 +67,7 @@ class Iadmin::SlidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slider_params
-        params.require(:slider).permit(:id, :title, slides_attributes: [:id, :description, :image, :image_slide, :slide_image_file_name ] )
+        params.require(:slider).permit(:id, :title, slides_attributes: [:id, :description, :image, :image_slide, :slide_image_file_name, :_destroy ] )
     end
 
 end

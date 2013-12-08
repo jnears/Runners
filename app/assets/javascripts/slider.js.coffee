@@ -2,6 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
+  $hideslide = $(".hideslide")
+  $hideslide.on "click", (e) ->
+    $link = $(this)
+    $link.closest(".slide_fields").hide() 
+    $link.prev("input[type=hidden]").val "1"
+
+
+
   toSliderItem = ($targetItem) ->
     if $targetItem.length
       newPosition = $targetItem.position().left

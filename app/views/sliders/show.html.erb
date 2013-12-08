@@ -1,9 +1,12 @@
-<h1><%= @post.title %></h1>
+<h1> <%= @slider.title %></h1>
+<ul>
+<% @slider.slides.shuffle.each do |slide| %>
+<li>
+<%= slide.description %>
+<%= image_tag slide.image_slide.url(:small) %>
+</li>
+<% end %>
+</ul>
 
-<p>
-	Published on:
-<time datetime="<%= @post.publish_date.strftime('%d-%m-%Y') %>"><%= @post.publish_date.strftime('%e %B') %></time>
-</p>
-<p>
-<%= @post.body %>
-</p>
+
+

@@ -16,7 +16,10 @@
     <%= f.text_field :title %>
   </div> 
 
+ <ol>
   <%= f.fields_for :slides do |slide| %>
+ <li> 
+  <div class="slide_fields">
   <div class="field">
     <%= slide.label :description, 'Description' %><br />
     <%= slide.text_field :description %>
@@ -25,8 +28,20 @@
     <%= slide.label :image_slide, 'Slide Image' %><br />
     <%= slide.file_field :image_slide %>
   </div>
+  <div class="field">
+    <%= slide.hidden_field :_destroy, :class => 'hidden' %><br />
+    <%= link_to "Remove", "#", :class => 'hideslide' %>
+  </div>
+<div class="field">
+    <%= slide.label :_destroy, "Destroy" %>
+  </div>
+</div>
+<%= link_to "Show", "#", :class => 'showslide' %>
+</li>
+
   <% end %>
 
+</ol>
 
 <div class="form-actions">
      <%= f.submit 'Save', :class =>'btn btn-primary' %>
