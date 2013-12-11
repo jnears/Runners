@@ -13,7 +13,7 @@ class Iadmin::SlidersController < ApplicationController
 
   def new
   	@slider = Slider.new
-    3.times do
+    1.times do
       slide = @slider.slides.build
     end
   end

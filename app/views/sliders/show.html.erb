@@ -1,12 +1,42 @@
 <h1> <%= @slider.title %></h1>
-<ul>
+
+
+
+
+
+
+
+
+<div class="slider-wrapper">
+<div class="slider-window">
+<div class="slider">
+
+
 <% @slider.slides.shuffle.each do |slide| %>
-<li>
-<%= slide.description %>
+
+
+<div class="slider-item">
 <%= image_tag slide.image_slide.url(:small) %>
-</li>
+<div class="slider-text">
+		  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		  		tempor incididunt ut labore et dolore magna aliqua. 
+		  	</div>
+		  </div>
 <% end %>
-</ul>
+
+
+		  </div>
+	</div>
+	
+	<div id="slider-controls" class="slider-controls">
+	  <a href="#" class="slider-controls-prev"><</a>
+	  <a href="#" class="slider-controls-next">></a>
+	</div>
 
 
 
+</div>
+
+
+
+	

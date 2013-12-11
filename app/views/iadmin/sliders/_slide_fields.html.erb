@@ -1,0 +1,15 @@
+<fieldset>
+ <li> 
+  
+    <%= f.label :description, 'Description' %><br />
+    <%= f.text_field :description %>
+
+    <%= f.label :image_slide, 'Slide Image' %><br />
+    <%= f.file_field :image_slide %>
+    <%= image_tag f.object.image_slide.url(:small) if f.object.image_slide %>
+
+    <%= f.hidden_field :_destroy, :class => 'hidden' %>
+    <%= link_to "Remove", "#", :class => 'remove_fields' %>
+  
+</li>
+</fieldset>

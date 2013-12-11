@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= add_fields
+//= slider
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
