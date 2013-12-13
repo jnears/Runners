@@ -12,7 +12,9 @@ Runners::Application.routes.draw do
 
   namespace :iadmin do
     resources :posts
-    resources :sliders
+    resources :sliders do
+      collection { post :sortlist }
+    end
     resources :slides
 
   end

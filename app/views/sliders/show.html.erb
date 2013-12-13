@@ -1,25 +1,18 @@
 <h1> <%= @slider.title %></h1>
 
 
-
-
-
-
-
-
 <div class="slider-wrapper">
 <div class="slider-window">
 <div class="slider">
 
 
-<% @slider.slides.shuffle.each do |slide| %>
+<% @slider.slides.sorted.each do |slide| %>
 
 
 <div class="slider-item">
 <%= image_tag slide.image_slide.url(:small) %>
 <div class="slider-text">
-		  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		  		tempor incididunt ut labore et dolore magna aliqua. 
+<%= slide.description %>
 		  	</div>
 		  </div>
 <% end %>
@@ -33,10 +26,8 @@
 	  <a href="#" class="slider-controls-next">></a>
 	</div>
 
-
-
 </div>
 
-
+<p></p>
 
 	

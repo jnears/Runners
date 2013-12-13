@@ -6,7 +6,7 @@ $( document ).ready(function() {
     });
 
     var maxScrollPosition = totalWidth - $(".slider-window").outerWidth(); 
-     //$("p").append(totalWidth); 
+     $("p").append(totalWidth); 
      //$("p").append(maxScrollPosition); 
 
 	function toSliderItem($targetItem) {
@@ -51,4 +51,15 @@ $( document ).ready(function() {
         var $targetItem = $(".slider-item-active").next();
          toSliderItem($targetItem);
     });
+
+    $(function() {
+    $( "#sortable" ).sortable({ 
+    	axis: "y",
+    	handle: ".handle",
+    	update: function() {
+		    return $.post($(this).data('update-url'), $(this).sortable('serialize'));
+		  }
+    }); 
+
+  });
 });

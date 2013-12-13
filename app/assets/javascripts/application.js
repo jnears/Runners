@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui-1.10.3.custom.min
 //= add_fields
 //= slider
 //= require jquery_ujs

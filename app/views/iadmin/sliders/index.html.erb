@@ -1,5 +1,4 @@
 <h1>Listing Sliders</h1>
-
 <%= link_to 'New Slider', new_iadmin_slider_path %>
 <table class="table table-striped">
 <thead>
@@ -8,31 +7,24 @@
 <th>Slide Descriptions</th>
 </tr>
 </thead>
-
 <tbody>
 <% @sliders.each do |slider| %>
 <tr>
-
 <td>
 <%= link_to slider.title, edit_iadmin_slider_path(slider) %>
 </td>
 <td>
-<ul>
+ <ul id="slider-sortable">
 <% slider.slides.each do |slide| %>
-<li>
+ <%= content_tag_for :li, slide do %>
 <%= slide.description %>
 <%= image_tag slide.image_slide.url(:small) %>
-</li>
+<% end %>
 <% end %>
 </ul>
-
 </td>
 <td><%= link_to 'Destroy', iadmin_slider_path(slider), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
 </tr>
 <% end %>
 </tbody>
 </table>
-
-
-<br />

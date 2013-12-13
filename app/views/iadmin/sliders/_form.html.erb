@@ -1,13 +1,10 @@
 <%= form_for [:iadmin, @slider], :url =>  [:iadmin, @slider], :html => { :multipart => true } do |f| %>
-
-<%= debug(f) %>
   <% if @slider.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@slider.errors.count, "error") %> prohibited this slider from being saved:</h2>
-
       <ul>
-      <% @slider.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+       <% @slider.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
@@ -18,19 +15,19 @@
     <%= f.text_field :title %>
   </div> 
 
- <ol id="slider-list">
-  
-  <%= f.fields_for :slides do |builder| %>
-  <%= render 'slide_fields', f: builder %>
-  <% end %>
-  <%= link_to_add_fields "Add Answer", f, :slides %>
+  <ul id="sortable" data-update-url="<%= sortlist_iadmin_sliders_url %>" >
+    <%= f.fields_for :slides do |builder| %>
+    <%= render 'slide_fields', f: builder %>
+    <% end %>
+    <%= link_to_add_fields "Add Slide", f, :slides %>
+  </ul> 
 
-</ol>
-<!-- <div id="Meal_00">
-<input type="text" id="Field_00" value="">
-</div> -->
-<div class="form-actions">
-     <%= f.submit 'Save', :class =>'btn btn-primary' %>
-  <%= link_to 'Cancel', iadmin_sliders_path, :class=> "btn" %>
+  <hr>
+
+  
+
+  <div class="form-actions">
+    <%= f.submit 'Save', :class =>'btn btn-primary' %>
+    <%= link_to 'Cancel', iadmin_sliders_path, :class=> "btn" %>
   </div>
 <% end %>

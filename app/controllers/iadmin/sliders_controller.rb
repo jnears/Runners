@@ -1,9 +1,8 @@
 class Iadmin::SlidersController < ApplicationController
-	before_action :set_slider, only: [:edit, :update, :destroy]
+	before_action :set_slider, only: [:edit, :sortable, :update, :destroy]
 
   def index #mapped as a GET request to the index.html.erb file
     @sliders = Slider.all
-    @slides = Slide.all
     @sliders = @sliders.by_slide_id(params[:slide]) if params[:slide].present?
   end
 
@@ -21,6 +20,7 @@ class Iadmin::SlidersController < ApplicationController
   def edit
   	if @slider.slides.empty? #if no associated record exists ensure a form field shows by calling the build method
     end
+   
   end
 
   def create
@@ -58,6 +58,15 @@ class Iadmin::SlidersController < ApplicationController
     end
   end
 
+  def sortlist
+
+
+    params[:slide].each_with_index do |id, index|
+     Slide.update_all({sort: index+1}, {id: id})
+  end
+  render nothing: true
+end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -67,7 +76,7 @@ class Iadmin::SlidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slider_params
-        params.require(:slider).permit(:id, :title, slides_attributes: [:id, :description, :image, :image_slide, :slide_image_file_name, :_destroy ] )
+        params.require(:slider).permit(:id, :title, slides_attributes: [:id, :description, :image, :image_slide, :slide_image_file_name, :sorted, :_destroy ] )
     end
 
 end
