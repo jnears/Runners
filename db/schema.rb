@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213104054) do
+ActiveRecord::Schema.define(version: 20140119145627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20131213104054) do
     t.integer "post_id"
   end
 
+  create_table "intranets", force: true do |t|
+    t.text     "category_name"
+    t.boolean  "show"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "slug"
@@ -41,6 +50,12 @@ ActiveRecord::Schema.define(version: 20131213104054) do
     t.text     "body"
     t.date     "publish_date"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relateds", force: true do |t|
+    t.text     "weburl"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -15,4 +15,7 @@ class Slide < ActiveRecord::Base
   #     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
   #     :url => "/system/:attachment/:id/:style/:filename"
 
+
+  scope :sorted, -> { order("sort ASC") }
+
 end

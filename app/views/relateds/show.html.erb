@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Weburl:</strong>
+  <%= remote_file_exists?(@related.weburl) %>
+  <%= @related.weburl %>
+</p>
+
+<%= link_to 'Edit', edit_related_path(@related) %> |
+<%= link_to 'Back', relateds_path %>

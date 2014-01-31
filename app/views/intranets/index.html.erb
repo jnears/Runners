@@ -1,0 +1,34 @@
+<h1>Listing intranets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category name</th>
+      <th>Show</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @intranets.each do |intranet| %>
+
+      <tr>
+        <td><%= intranet.category_name %></td>
+        <td><% if intranet.show == true %><%= intranet.show  %><% else %><strong><%= intranet.show  %></strong><% end %></td>
+        <td><% if intranet.start_time.present? %><%= intranet.start_time.strftime("Starts on %d %B at %H:%M%p") %><% end %></td>
+        <td><%= intranet.finish_time.to_s %></td>
+        <td><%= link_to 'Show', intranet %></td>
+        <td><%= link_to 'Edit', edit_intranet_path(intranet) %></td>
+        <td><%= link_to 'Destroy', intranet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Intranet', new_intranet_path %>

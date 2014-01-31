@@ -1,4 +1,8 @@
 Runners::Application.routes.draw do
+  resources :intranets
+
+  resources :relateds
+
   resources :runners do
    member do
     get :show_lastname #get on specific runner /runners/:id/show_lastname, routed to runners#show_lastname

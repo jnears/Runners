@@ -1,0 +1,21 @@
+<%= form_for(@related) do |f| %>
+  <% if @related.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@related.errors.count, "error") %> prohibited this related from being saved:</h2>
+
+      <ul>
+      <% @related.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :weburl %><br>
+    <%= f.text_area :weburl %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

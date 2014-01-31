@@ -4,7 +4,9 @@
 <thead>
 <tr>
 <th>Title</th>
-<th>Slide Descriptions</th>
+<th>Code to add slider</th>
+<th>Slide</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -14,16 +16,20 @@
 <%= link_to slider.title, edit_iadmin_slider_path(slider) %>
 </td>
 <td>
- <ul id="slider-sortable">
+ <%= raw "<%= display_slider('#{slider.id}') %" %><%= raw ">" %>
+</td>
+<td>
+
 <% slider.slides.each do |slide| %>
  <%= content_tag_for :li, slide do %>
+ 
 <%= slide.description %>
 <%= image_tag slide.image_slide.url(:small) %>
 <% end %>
 <% end %>
-</ul>
+
 </td>
-<td><%= link_to 'Destroy', iadmin_slider_path(slider), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td><%= link_to 'View', iadmin_slider_path(slider)%> <%= link_to 'Destroy', iadmin_slider_path(slider), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
 <% end %>
 </tbody>
