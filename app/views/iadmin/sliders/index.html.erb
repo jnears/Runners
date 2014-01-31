@@ -19,15 +19,20 @@
  <%= raw "<%= display_slider('#{slider.id}') %" %><%= raw ">" %>
 </td>
 <td>
-
+<table>
+<tbody>
 <% slider.slides.each do |slide| %>
- <%= content_tag_for :li, slide do %>
- 
-<%= slide.description %>
+<!--  <%= content_tag_for :li, slide do %> -->
+ <tr><td>
+<%= slide.description %></td>
+<td>
 <%= image_tag slide.image_slide.url(:small) %>
+</td>
+</tr>
 <% end %>
 <% end %>
-
+</tbody>
+</table>
 </td>
 <td><%= link_to 'View', iadmin_slider_path(slider)%> <%= link_to 'Destroy', iadmin_slider_path(slider), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
