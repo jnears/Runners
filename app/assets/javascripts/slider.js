@@ -1,9 +1,10 @@
-$( document ).ready(function() {
+$(document).on('ready page:change', function() {
     var totalWidth = 0;
     //iterate over the slider-item divs and count the totoal width
     $(".slider-item").each(function() {
       totalWidth = totalWidth + $(this).outerWidth(true);// (true) includes the margin i.e. margin-right 20
     });
+
 
     var maxScrollPosition = totalWidth - $(".slider-window").outerWidth(); 
      $("p").append(totalWidth); 

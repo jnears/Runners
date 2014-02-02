@@ -1,5 +1,20 @@
 /* slider */
 
+@mixin respond-to($media) {
+  @if $media == handheld {
+    @media only screen and (max-width: 747px) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (max-width: 950px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: 951px) and (max-width: 979px) { @content; }
+  }
+  @else if $media == large_desktop {
+    @media only screen and (min-width: 1200px) { @content; }
+  }
+}
+
 .slider-wrapper {
   position: relative;
   
@@ -7,6 +22,9 @@
 
 .slider-window {
   width: 300px;
+  @include respond-to(handheld) { width: 100px; }
+  @include respond-to(tablet) { width: 200px; }
+  @include respond-to(large_desktop) { width: 400px; }
   margin: 0 auto;
   overflow: hidden;
 }
@@ -21,6 +39,10 @@
   float: left;
    margin-right: 20px;
   list-style: none;
+  width: 300px;
+  @include respond-to(handheld) { width: 100px; }
+  @include respond-to(tablet) { width: 200px; }
+  @include respond-to(large_desktop) { width: 400px; }
 }
 
 
