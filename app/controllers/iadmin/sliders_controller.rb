@@ -4,7 +4,7 @@ class Iadmin::SlidersController < ApplicationController
   def index #mapped as a GET request to the index.html.erb file
     @sliders = Slider.all
     @slider = Slide.all
-    @sliders = @sliders.by_slide_id(params[:slide]) if params[:slide].present?
+    # @sliders = @sliders.by_slide_id(params[:slide]) if params[:slide].present?
   end
 
   # def show

@@ -4,7 +4,15 @@ class Post < ActiveRecord::Base
 	# has_many :categories, through: :categories_posts
 	has_and_belongs_to_many :categories
 	accepts_nested_attributes_for :categories
+
+
   scope :by_category_id, lambda {|cid| joins(:categories).where(['categories.id=?', cid])}
+
+
+
+
+
+  
 	before_validation :create_slug, :set_publish_date
 	validates_presence_of :title, :excerpt, :body
   validates_uniqueness_of :slug

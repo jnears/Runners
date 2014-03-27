@@ -1,9 +1,9 @@
 <h1>Listing Posts</h1>
 Filter categories: 
 <%= link_to 'All', blog_path %> | 
-<% @categories.each do |category| %>
-            <%= link_to category.name, blog_path(:category => category.id) %> 
-            <%= '|' unless category == @categories.last %>
+<% @categories.each do |c| %>
+            <%= link_to c.name, blog_path(:category => c.id) %> 
+            <%= '|' unless c == @categories.last %>
           <% end %>
 <table class="table table-striped">
   <thead>

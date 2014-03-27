@@ -69,6 +69,6 @@ class IntranetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def intranet_params
-      params.require(:intranet).permit(:category_name, :show, :start_time, :finish_time)
+      params.require(:intranet).permit(:category_name, :show, :start_time, :start_time_text, :finish_time)
     end
 end

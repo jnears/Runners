@@ -1,0 +1,21 @@
+<% myslider.slides.sorted.each do |slide| %>
+
+
+<div class="slider-item">
+<%= image_tag slide.image_slide.url(:medium) %>
+<div class="slider-text">
+<%= slide.description %>
+		  	</div>
+		  </div>
+<% end %>
+
+
+		  </div>
+	</div>
+	
+	<div id="slider-controls" class="slider-controls">
+	  <a href="#" class="slider-controls-prev"><</a>
+	  <a href="#" class="slider-controls-next">></a>
+	</div>
+
+</div>
